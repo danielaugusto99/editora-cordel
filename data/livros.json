@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "O Menino que Guardava Estrelas no Bolso",
+    "author": "Ana Clara Araújo",
+    "category": "Infantil & Juvenil",
+    "year": "2026",
+    "pages": 64,
+    "isbn": "978-65-89421-01-4",
+    "coverBg": "#8C4A32",
+    "coverText": "#F6F1EA",
+    "synopsis": "Uma fábula poética sobre curiosidade, afetos e a magia de descobrir o mundo através da leitura.",
+    "amazonUrl": "https://www.amazon.com.br/s?k=O+Menino+que+Guardava+Estrelas+no+Bolso",
+    "estanteUrl": "https://www.estantevirtual.com.br/busca?q=O+Menino+que+Guardava+Estrelas",
+    "martinsUrl": "https://www.martinsfontespaulista.com.br/busca?q=Editora+Cordel"
+  },
+  {
+    "id": 2,
+    "title": "Cartas do Sertão Dourado",
+    "author": "Mariana Vasconcelos",
+    "category": "Literatura",
+    "year": "2026",
+    "pages": 184,
+    "isbn": "978-65-89421-02-1",
+    "coverBg": "#231914",
+    "coverText": "#D4B47C",
+    "synopsis": "Contos entrelaçados que celebram a memória, a oralidade nordestina e a força das mulheres.",
+    "amazonUrl": "https://www.amazon.com.br/s?k=Cartas+do+Sertao+Dourado",
+    "estanteUrl": "https://www.estantevirtual.com.br/busca?q=Cartas+do+Sertao+Dourado",
+    "martinsUrl": "https://www.martinsfontespaulista.com.br/busca?q=Cartas+do+Sertao"
+  }
+]

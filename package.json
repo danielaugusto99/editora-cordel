@@ -1,0 +1,12 @@
+{
+  "name": "editora-cordel",
+  "version": "1.0.0",
+  "description": "Painel e site da Editora Cordel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

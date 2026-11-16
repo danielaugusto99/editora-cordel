@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Editorial | Editora Cordel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #F6F1EA;
+      --bg-sand: #EBE2D5;
+      --bg-dark: #231914;
+      --text-primary: #2A1E17;
+      --accent-gold: #B08948;
+      --accent-terracotta: #8C4A32;
+      --border-subtle: #DCD0C0;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-primary);
+      padding: 2rem;
+    }
+    .container { max-width: 820px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    h1, h2 { font-family: 'Cormorant Garamond', serif; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .full-width { grid-column: 1 / -1; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid var(--border-subtle);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    .btn {
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+      border: none;
+      padding: 0.9rem 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .btn:hover { background: var(--accent-terracotta); }
+    .book-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .btn-delete {
+      background: #a32a2a;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .status-msg { margin-top: 1rem; font-weight: 600; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <span style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-gold); text-transform: uppercase;">Administração</span>
+        <h1>Editora Cordel — Catálogo</h1>
+      </div>
+      <a href="index.html" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">← Ver Site Público</a>
+    </header>
+
+    <div class="card">
+      <h2 style="margin-bottom: 1.25rem;">Cadastrar Nova Obra</h2>
+      <form id="bookForm">
+        <div class="form-grid">
+          <div class="full-width">
+            <label>Senha Editorial (Obrigatória para salvar)</label>
+            <input type="password" id="adminPassword" placeholder="Digite a senha da editora" required>
+          </div>
+
+          <div>
+            <label>Título do Livro *</label>
+            <input type="text" id="title" required>
+          </div>
+
+          <div>
+            <label>Autor(a) *</label>
+            <input type="text" id="author" required>
+          </div>
+
+          <div>
+            <label>Categoria</label>
+            <select id="category">
+              <option value="Literatura">Literatura</option>
+              <option value="Infantil & Juvenil">Infantil & Juvenil</option>
+              <option value="Educação & Cultura">Educação & Cultura</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Cor da Capa (Editorial)</label>
+            <select id="coverStyle">
+              <option value="#8C4A32|#F6F1EA">Terracota com Texto Creme</option>
+              <option value="#231914|#D4B47C">Café Escuro com Texto Dourado</option>
+              <option value="#B08948|#231914">Dourado com Texto Café</option>
+              <option value="#4A3B32|#F6F1EA">Marrom Clássico com Texto Creme</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Ano de Publicação</label>
+            <input type="text" id="year" value="2026">
+          </div>
+
+          <div>
+            <label>Número de Páginas</label>
+            <input type="number" id="pages" placeholder="Ex: 120">
+          </div>
+
+          <div class="full-width">
+            <label>ISBN</label>
+            <input type="text" id="isbn" placeholder="Ex: 978-65-89421-05-2">
+          </div>
+
+          <div class="full-width">
+            <label>Sinopse Completa *</label>
+            <textarea id="synopsis" required></textarea>
+          </div>
+
+          <div class="full-width">
+            <label>Link de Compra — Amazon Brasil</label>
+            <input type="url" id="amazonUrl" placeholder="https://www.amazon.com.br/...">
+          </div>
+
+          <div>
+            <label>Link — Estante Virtual</label>
+            <input type="url" id="estanteUrl" placeholder="https://www.estantevirtual.com.br/...">
+          </div>
+
+          <div>
+            <label>Link — Martins Fontes</label>
+            <input type="url" id="martinsUrl" placeholder="https://www.martinsfontespaulista.com.br/...">
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Publicar Livro no Catálogo</button>
+        <div id="statusMsg" class="status-msg"></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Obras Publicadas</h2>
+      <div id="publishedList">Carregando...</div>
+    </div>
+  </div>
+
+  <script>
+    async function loadBooks() {
+      const res = await fetch('/api/livros');
+      const books = await res.json();
+      const list = document.getElementById('publishedList');
+
+      if (books.length === 0) {
+        list.innerHTML = '<p>Nenhum livro cadastrado ainda.</p>';
+        return;
+      }
+
+      list.innerHTML = books.map(b => `
+        <div class="book-item">
+          <div>
+            <strong>${b.title}</strong> <span style="color: #666;">— ${b.author} (${b.category})</span>
+          </div>
+          <button class="btn-delete" onclick="deleteBook(${b.id})">Remover</button>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('bookForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const statusMsg = document.getElementById('statusMsg');
+      const [coverBg, coverText] = document.getElementById('coverStyle').value.split('|');
+
+      const payload = {
+        password: document.getElementById('adminPassword').value,
+        book: {
+          title: document.getElementById('title').value,
+          author: document.getElementById('author').value,
+          category: document.getElementById('category').value,
+          year: document.getElementById('year').value,
+          pages: document.getElementById('pages').value,
+          isbn: document.getElementById('isbn').value,
+          synopsis: document.getElementById('synopsis').value,
+          coverBg,
+          coverText,
+          amazonUrl: document.getElementById('amazonUrl').value || '#',
+          estanteUrl: document.getElementById('estanteUrl').value || '#',
+          martinsUrl: document.getElementById('martinsUrl').value || '#'
+        }
+      };
+
+      const res = await fetch('/api/livros', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        statusMsg.style.color = 'green';
+        statusMsg.textContent = '✓ ' + data.message;
+        e.target.reset();
+        loadBooks();
+      } else {
+        statusMsg.style.color = '#a32a2a';
+        statusMsg.textContent = 'Erro: ' + data.error;
+      }
+    });
+
+    async function deleteBook(id) {
+      const password = document.getElementById('adminPassword').value;
+      if (!password) {
+        alert('Digite a Senha Editorial no campo acima antes de remover um livro.');
+        return;
+      }
+      if (!confirm('Tem certeza que deseja remover este livro do catálogo?')) return;
+
+      const res = await fetch(`/api/livros/${id}`, {
+        method: 'DELETE',
+        headers: { 'x-admin-password': password }
+      });
+
+      if (res.ok) {
+        loadBooks();
+      } else {
+        const data = await res.json();
+        alert(data.error);
+      }
+    }
+
+    loadBooks();
+  </script>
+</body>
+</html>

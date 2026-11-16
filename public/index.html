@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editora Cordel — Literatura, Poesia e Educação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #F6F1EA;
+      --bg-sand: #EBE2D5;
+      --bg-dark: #231914;
+      --text-primary: #2A1E17;
+      --text-secondary: #5C4B40;
+      --accent-gold: #B08948;
+      --accent-terracotta: #8C4A32;
+      --border-subtle: #DCD0C0;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* Top Bar & Nav */
+    header {
+      background-color: var(--bg-cream);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { text-decoration: none; color: var(--text-primary); display: flex; flex-direction: column; }
+    .logo-top { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; }
+    .logo-main { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent-terracotta); }
+    .admin-link {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--white);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-terracotta);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 2.5rem auto;
+    }
+
+    /* Search & Filters */
+    .catalog-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem auto;
+      padding: 0 2rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+    }
+
+    .categories { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .cat-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background-color: var(--bg-dark);
+      color: var(--bg-cream);
+      border-color: var(--bg-dark);
+    }
+
+    .search-box input {
+      padding: 0.6rem 1rem;
+      width: 260px;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--white);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    /* Books Grid */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .book-card {
+      background-color: var(--white);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(42, 30, 23, 0.08);
+    }
+
+    .book-cover {
+      height: 280px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 4px 0 10px rgba(0,0,0,0.15), 4px 6px 12px rgba(42, 30, 23, 0.1);
+      text-decoration: none;
+    }
+
+    .cover-stamp { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; }
+    .cover-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+    .cover-author { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
+
+    .book-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .book-title {
+      font-size: 1.4rem;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .book-author {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .book-synopsis {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-buy-amazon {
+      display: block;
+      text-align: center;
+      background-color: var(--bg-dark);
+      color: var(--bg-cream);
+      padding: 0.75rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn-buy-amazon:hover {
+      background-color: var(--accent-terracotta);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.8rem; }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .search-box input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-top">Editora</span>
+        <span class="logo-main">Cordel</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="admin.html" class="admin-link">Painel Editorial ⚙️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="hero-tag">Poesia, Tradição e Contemporaneidade</span>
+      <h1>Obras que atravessam gerações e territórios</h1>
+      <p>Conheça o catálogo independente da Editora Cordel, valorizando a oralidade, a literatura nordestina e novas vozes da escrita contemporânea.</p>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="filter-bar">
+        <div class="categories" id="categoryFilters">
+          <button class="cat-btn active" data-category="Todos">Todas as Obras</button>
+          <button class="cat-btn" data-category="Literatura">Literatura</button>
+          <button class="cat-btn" data-category="Infantil & Juvenil">Infantil & Juvenil</button>
+          <button class="cat-btn" data-category="Educação & Cultura">Educação & Cultura</button>
+        </div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Pesquisar por título ou autor...">
+        </div>
+      </div>
+
+      <div class="books-grid" id="booksGrid">
+        <p>A carregar o catálogo do servidor...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Editora Cordel. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let books = [];
+    let activeCategory = "Todos";
+
+    const booksGrid = document.getElementById("booksGrid");
+    const searchInput = document.getElementById("searchInput");
+    const categoryButtons = document.querySelectorAll(".cat-btn");
+
+    async function fetchBooks() {
+      try {
+        const response = await fetch('/api/livros');
+        books = await response.json();
+        renderBooks();
+      } catch (error) {
+        booksGrid.innerHTML = '<p style="color: #a32a2a;">Erro ao carregar os livros do servidor Node.js.</p>';
+      }
+    }
+
+    function renderBooks() {
+      const term = searchInput.value.toLowerCase();
+      const filtered = books.filter(book => {
+        const matchesCat = activeCategory === "Todos" || book.category === activeCategory;
+        const matchesSearch = book.title.toLowerCase().includes(term) || book.author.toLowerCase().includes(term);
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        booksGrid.innerHTML = '<p>Nenhuma obra encontrada.</p>';
+        return;
+      }
+
+      booksGrid.innerHTML = filtered.map(book => `
+        <article class="book-card">
+          <div>
+            <a href="livro.html?id=${book.id}" class="book-cover" style="background-color: ${book.coverBg}; color: ${book.coverText};">
+              <span class="cover-stamp">Editora Cordel</span>
+              <div class="cover-title">${book.title}</div>
+              <span class="cover-author">${book.author}</span>
+            </a>
+            <span class="book-category">${book.category}</span>
+            <h3 class="book-title">
+              <a href="livro.html?id=${book.id}" style="text-decoration: none; color: inherit;">${book.title}</a>
+            </h3>
+            <div class="book-author">por ${book.author}</div>
+            <p class="book-synopsis">${book.synopsis}</p>
+          </div>
+          <div>
+            <a href="livro.html?id=${book.id}" class="btn-buy-amazon">Ver Obra e Onde Comprar →</a>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        categoryButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCategory = btn.dataset.category;
+        renderBooks();
+      });
+    });
+
+    searchInput.addEventListener("input", renderBooks);
+
+    // Carregar livros ao iniciar a página
+    fetchBooks();
+  </script>
+</body>
+</html>

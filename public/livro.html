@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Obra | Editora Cordel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #F6F1EA;
+      --bg-sand: #EBE2D5;
+      --bg-dark: #231914;
+      --text-primary: #2A1E17;
+      --text-secondary: #5C4B40;
+      --accent-gold: #B08948;
+      --accent-terracotta: #8C4A32;
+      --border-subtle: #DCD0C0;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+    header {
+      background-color: var(--bg-cream);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { text-decoration: none; color: var(--text-primary); }
+    .logo-top { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; }
+    .logo-main { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      background-color: var(--bg-dark);
+      color: var(--bg-cream);
+    }
+
+    .product-container {
+      max-width: 1100px;
+      margin: 3.5rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .book-cover-large {
+      height: 440px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 8px 0 16px rgba(0,0,0,0.2), 8px 12px 24px rgba(42, 30, 23, 0.15);
+    }
+
+    .cover-stamp { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.85; }
+    .cover-title { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 700; line-height: 1.15; }
+    .cover-author { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
+
+    .book-category {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-author {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+
+    .product-synopsis {
+      font-size: 1.02rem;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+      background-color: var(--bg-sand);
+      padding: 1.25rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .spec-item span { display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.08em; }
+    .spec-item strong { font-size: 0.95rem; color: var(--text-primary); }
+
+    .buy-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .store-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .store-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background-color: var(--white);
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .store-btn:hover {
+      background-color: var(--bg-dark);
+      color: var(--bg-cream);
+      border-color: var(--bg-dark);
+      transform: translateX(4px);
+    }
+
+    .store-btn.primary-store {
+      background-color: var(--bg-dark);
+      color: var(--bg-cream);
+      border-color: var(--bg-dark);
+    }
+
+    .store-btn.primary-store:hover {
+      background-color: var(--accent-terracotta);
+      border-color: var(--accent-terracotta);
+    }
+
+    @media (max-width: 768px) {
+      .product-container { grid-template-columns: 1fr; gap: 2rem; }
+      .book-cover-large { height: 360px; max-width: 280px; }
+      .product-info h1 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-top">Editora</span>
+        <span class="logo-main">Cordel</span>
+      </a>
+      <a href="index.html#catalogo" class="back-link">← Voltar ao Catálogo</a>
+    </div>
+  </header>
+
+  <main class="product-container" id="productContent">
+    <p>Carregando informações da obra...</p>
+  </main>
+
+  <script>
+    async function loadBookDetails() {
+      const container = document.getElementById("productContent");
+      const params = new URLSearchParams(window.location.search);
+      const bookId = params.get("id") || 1;
+
+      try {
+        const response = await fetch(`/api/livros/${bookId}`);
+        
+        if (!response.ok) {
+          container.innerHTML = "<p>Obra não encontrada no catálogo.</p>";
+          return;
+        }
+
+        const book = await response.json();
+        document.title = `${book.title} | Editora Cordel`;
+
+        container.innerHTML = `
+          <div class="book-cover-large" style="background-color: ${book.coverBg}; color: ${book.coverText};">
+            <span class="cover-stamp">Editora Cordel</span>
+            <div class="cover-title">${book.title}</div>
+            <span class="cover-author">${book.author}</span>
+          </div>
+
+          <div class="product-info">
+            <span class="book-category">${book.category}</span>
+            <h1>${book.title}</h1>
+            <p class="product-author">por <strong>${book.author}</strong></p>
+
+            <div class="product-synopsis">
+              <p>${book.synopsis}</p>
+            </div>
+
+            <div class="specs-grid">
+              <div class="spec-item">
+                <span>Lançamento</span>
+                <strong>${book.year}</strong>
+              </div>
+              <div class="spec-item">
+                <span>Páginas</span>
+                <strong>${book.pages} págs.</strong>
+              </div>
+              <div class="spec-item">
+                <span>ISBN</span>
+                <strong>${book.isbn}</strong>
+              </div>
+            </div>
+
+            <div class="buy-box">
+              <h3>Escolha onde adquirir esta obra</h3>
+              <div class="store-list">
+                <a href="${book.amazonUrl}" target="_blank" rel="noopener noreferrer" class="store-btn primary-store">
+                  <span>Comprar na Amazon Brasil</span>
+                  <span>Acessar loja ↗</span>
+                </a>
+                <a href="${book.estanteUrl}" target="_blank" rel="noopener noreferrer" class="store-btn">
+                  <span>Comprar na Estante Virtual</span>
+                  <span>Acessar loja ↗</span>
+                </a>
+                <a href="${book.martinsUrl}" target="_blank" rel="noopener noreferrer" class="store-btn">
+                  <span>Comprar na Livraria Martins Fontes</span>
+                  <span>Acessar loja ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        container.innerHTML = '<p style="color: #a32a2a;">Erro ao conectar com o servidor Node.js.</p>';
+      }
+    }
+
+    loadBookDetails();
+  </script>
+</body>
+</html>
